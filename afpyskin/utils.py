@@ -3,7 +3,9 @@ from pyquery import PyQuery as pq
 
 twocolumns = set(['/trac', '/wiki', '/photo', '/membres'])
 
-def get_theme(request, response, log):
+def get_theme(req, resp, log):
+    if '/forum' in req.path_info:
+        return "/theme/twocolumns.html"
     return "/theme/index.html"
 
 def match_notheme(req, resp, headers, *args):

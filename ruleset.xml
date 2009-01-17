@@ -11,37 +11,37 @@
     <dest href="{here}/aqueous_light/" />
   </proxy>
 
-  <proxy path="/membres" class="membres default"
+  <proxy path="/membres" class="theme membres default"
          strip-script-name="0">
          <dest href="http://www.afpy.org:8096/membres" />
     <response rewrite-links="1" />
   </proxy>
 
-  <proxy path="/photos" class="photos default"
+  <proxy path="/photos" class="theme photos default"
          strip-script-name="0">
     <dest href="http://www.afpy.org:8096" />
     <response rewrite-links="1" />
   </proxy>
 
-  <proxy path="/wiki" class="wiki default"
+  <proxy path="/wiki" class="theme wiki default"
          strip-script-name="0">
          <dest href="http://www.afpy.org:8096/wiki" />
     <response rewrite-links="1" />
   </proxy>
 
-  <proxy path="/planet" class="planet default"
+  <proxy path="/planet" class="theme planet default"
          strip-script-name="0">
          <dest href="http://www.afpy.org:8096/planet" />
     <response rewrite-links="1" />
   </proxy>
 
-  <proxy path="/trac" class="trac default"
+  <proxy path="/trac" class="theme trac default"
          strip-script-name="0">
-         <dest href="http://www.afpy.org/trac" />
+    <dest href="http://www.afpy.org/trac" />
     <response rewrite-links="1" />
   </proxy>
 
-  <proxy path="/" class="plone default">
+  <proxy path="/" class="theme plone default">
     <dest href="http://www.afpy.org" />
     <response rewrite-links="1" />
   </proxy>
@@ -92,8 +92,13 @@
   <rule class="plone">
     <drop content="//head/style[3]"
         nocontent="ignore" />
-    <replace content="children:#content" theme="children:#content" />
     <pyquery use="afpyskin.fixup:plone" />
+    <replace content="children:#content" theme="children:#content" />
+    <replace content="children:#content" theme="children:#contentnorightbar" />
+  </rule>
+
+  <rule class="theme">
+    <pyquery use="afpyskin.fixup:prepare" />
   </rule>
 
   <rule>
@@ -102,5 +107,14 @@
           theme="children:#subnav" />
     <replace href="/theme/global_menu.html" content="children:#nav"
             theme="children:#nav" />
+    <append href="/theme/portlet_aide.html"
+          content="#portlet"
+          theme="children:#sidebarright" />
+    <append href="/.portlet_news"
+          content="#portlet"
+          theme="children:#sidebarright" />
+    <append href="/.portlet_jobs"
+          content="#portlet"
+          theme="children:#sidebarright" />
   </rule>
 </ruleset>

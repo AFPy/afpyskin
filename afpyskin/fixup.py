@@ -2,6 +2,13 @@
 from pyquery import PyQuery as pq
 import utils
 
+def prepare(content, theme, resource_fetcher, log):
+    theme('#nav').empty()
+    theme('#subnav').empty()
+    theme('#sidebar').empty()
+    theme('#sidebarright').empty()
+    theme('#content').empty()
+
 def twocolumns(content, theme, resource_fetcher, log):
     theme('#content').attr.id = 'contentnorightbar'
     theme('#sidebarright').remove()
@@ -12,7 +19,6 @@ def nocolumns(content, theme, resource_fetcher, log):
     theme('#sidebarright').remove()
 
 def photos(content, theme, resource_fetcher, log):
-    theme('#sidebar').empty()
     portlets = content('.portlet')
     for p in portlets:
         utils.fixnav(p, theme)
@@ -21,6 +27,8 @@ def plone(content, theme, resource_fetcher, log):
     theme('#sidebar').empty()
     col1 = content('#portal-column-one')
     portlets = col1('.portlet')
+    content('.listingBar').css.clear = 'none'
+    content('ftable').css.clear = 'none'
     for p in portlets:
         utils.fixnav(p, theme)
 
