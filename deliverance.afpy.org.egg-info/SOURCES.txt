@@ -1,9 +1,0 @@
-setup.cfg
-setup.py
-deliverance.afpy.org.egg-info/PKG-INFO
-deliverance.afpy.org.egg-info/SOURCES.txt
-deliverance.afpy.org.egg-info/dependency_links.txt
-deliverance.afpy.org.egg-info/entry_points.txt
-deliverance.afpy.org.egg-info/not-zip-safe
-deliverance.afpy.org.egg-info/top_level.txt
-deliveranceafpyorg/__init__.py
