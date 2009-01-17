@@ -1,0 +1,106 @@
+<ruleset>
+
+  <server-settings>
+    <server>127.0.0.1:9003</server>
+    <execute-pyref>true</execute-pyref>
+    <dev-allow>127.0.0.1</dev-allow>
+    <dev-user username="guest" password="guest" />
+  </server-settings>
+
+  <proxy path="/theme" editable="1">
+    <dest href="{here}/aqueous_light/" />
+  </proxy>
+
+  <proxy path="/membres" class="membres default"
+         strip-script-name="0">
+         <dest href="http://www.afpy.org:8096/membres" />
+    <response rewrite-links="1" />
+  </proxy>
+
+  <proxy path="/photos" class="photos default"
+         strip-script-name="0">
+    <dest href="http://www.afpy.org:8096" />
+    <response rewrite-links="1" />
+  </proxy>
+
+  <proxy path="/wiki" class="wiki default"
+         strip-script-name="0">
+         <dest href="http://www.afpy.org:8096/wiki" />
+    <response rewrite-links="1" />
+  </proxy>
+
+  <proxy path="/planet" class="planet default"
+         strip-script-name="0">
+         <dest href="http://www.afpy.org:8096/planet" />
+    <response rewrite-links="1" />
+  </proxy>
+
+  <proxy path="/trac" class="trac default"
+         strip-script-name="0">
+         <dest href="http://www.afpy.org/trac" />
+    <response rewrite-links="1" />
+  </proxy>
+
+  <proxy path="/" class="plone default">
+    <dest href="http://www.afpy.org" />
+    <response rewrite-links="1" />
+  </proxy>
+
+  <match pyref="afpyskin.utils:match_notheme" abort="1" />
+
+  <theme pyref="afpyskin.utils:get_theme" />
+
+  <rule class="docs">
+    <drop content="//body/div[@class='related'][2]"
+        nocontent="ignore" />
+    <drop content="//body/div[@class='footer'][1]"
+        nocontent="ignore" />
+  </rule>
+
+  <rule class="photos">
+    <replace content="children:#content" theme="children:#content" />
+    <pyquery use="afpyskin.fixup:photos" />
+    <pyquery use="afpyskin.fixup:twocolumns" />
+  </rule>
+
+  <rule class="membres">
+    <replace content="children:body" theme="children:#content" />
+    <pyquery use="afpyskin.fixup:twocolumns" />
+  </rule>
+
+  <rule class="trac">
+    <pyquery use="afpyskin.fixup:trac" />
+    <replace content="children:#content" theme="children:#content" />
+    <pyquery use="afpyskin.fixup:twocolumns" />
+  </rule>
+
+  <rule class="wiki">
+    <pyquery use="afpyskin.fixup:wiki" />
+    <replace content="children:#wiki_header li" theme="children:#subnav"
+             nocontent="ignore" />
+    <replace content="children:#content" theme="children:#content" />
+    <pyquery use="afpyskin.fixup:twocolumns" />
+  </rule>
+
+  <rule class="planet">
+    <replace content="children:#footer" theme="children:#footer" />
+    <drop content="#header" nocontent="ignore" />
+    <replace content="children:#content" theme="children:#content" />
+    <pyquery use="afpyskin.fixup:nocolumns" />
+  </rule>
+
+  <rule class="plone">
+    <drop content="//head/style[3]"
+        nocontent="ignore" />
+    <replace content="children:#content" theme="children:#content" />
+    <pyquery use="afpyskin.fixup:plone" />
+  </rule>
+
+  <rule>
+    <replace href="/membres/utils/personnal_bar"
+          content="li"
+          theme="children:#subnav" />
+    <replace href="/theme/global_menu.html" content="children:#nav"
+            theme="children:#nav" />
+  </rule>
+</ruleset>
