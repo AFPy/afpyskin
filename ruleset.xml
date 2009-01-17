@@ -7,42 +7,45 @@
     <dev-user username="guest" password="guest" />
   </server-settings>
 
-  <proxy path="/theme" editable="1">
+  <proxy path="/theme">
     <dest href="{here}/aqueous_light/" />
+  </proxy>
+  <proxy path="/static">
+    <dest href="{here}/static/" />
   </proxy>
 
   <proxy path="/membres" class="theme membres default"
          strip-script-name="0">
-         <dest href="http://www.afpy.org:8096/membres" />
+         <dest href="http://wsgi.afpy.org/membres" />
     <response rewrite-links="1" />
   </proxy>
 
   <proxy path="/photos" class="theme photos default"
          strip-script-name="0">
-    <dest href="http://www.afpy.org:8096" />
+    <dest href="http://wsgi.afpy.org" />
     <response rewrite-links="1" />
   </proxy>
 
   <proxy path="/wiki" class="theme wiki default"
          strip-script-name="0">
-         <dest href="http://www.afpy.org:8096/wiki" />
+         <dest href="http://wsgi.afpy.org/wiki" />
     <response rewrite-links="1" />
   </proxy>
 
   <proxy path="/planet" class="theme planet default"
          strip-script-name="0">
-         <dest href="http://www.afpy.org:8096/planet" />
+         <dest href="http://wsgi.afpy.org/planet" />
     <response rewrite-links="1" />
   </proxy>
 
   <proxy path="/trac" class="theme trac default"
          strip-script-name="0">
-    <dest href="http://www.afpy.org/trac" />
+    <dest href="http://wsgi.afpy.org/trac" />
     <response rewrite-links="1" />
   </proxy>
 
   <proxy path="/" class="theme plone default">
-    <dest href="http://www.afpy.org" />
+    <dest href="http://zope.afpy.org" />
     <response rewrite-links="1" />
   </proxy>
 
@@ -105,9 +108,9 @@
     <replace href="/membres/utils/personnal_bar"
           content="li"
           theme="children:#subnav" />
-    <replace href="/theme/global_menu.html" content="children:#nav"
+    <replace href="/static/global_menu.html" content="children:#nav"
             theme="children:#nav" />
-    <append href="/theme/portlet_aide.html"
+    <append href="/static/portlet_aide.html"
           content="#portlet"
           theme="children:#sidebarright" />
     <append href="/.portlet_news"
@@ -117,4 +120,5 @@
           content="#portlet"
           theme="children:#sidebarright" />
   </rule>
+
 </ruleset>
