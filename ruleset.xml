@@ -16,25 +16,31 @@
 
   <proxy path="/membres" class="theme membres default"
          strip-script-name="0">
-         <dest href="http://wsgi.afpy.org/membres" />
+    <dest href="http://wsgi.afpy.org/membres" />
     <response rewrite-links="1" />
   </proxy>
 
   <proxy path="/photos" class="theme photos default"
          strip-script-name="0">
-    <dest href="http://wsgi.afpy.org" />
+         <dest href="http://wsgi.afpy.org/photos" />
     <response rewrite-links="1" />
   </proxy>
 
   <proxy path="/wiki" class="theme wiki default"
          strip-script-name="0">
-         <dest href="http://wsgi.afpy.org/wiki" />
+    <dest href="http://wsgi.afpy.org/wiki" />
     <response rewrite-links="1" />
   </proxy>
 
   <proxy path="/planet" class="theme planet default"
          strip-script-name="0">
-         <dest href="http://wsgi.afpy.org/planet" />
+    <dest href="http://wsgi.afpy.org/planet" />
+    <response rewrite-links="1" />
+  </proxy>
+
+  <proxy path="/association" class="theme docs default"
+         strip-script-name="0">
+    <dest href="http://wsgi.afpy.org/association" />
     <response rewrite-links="1" />
   </proxy>
 
@@ -58,12 +64,16 @@
         nocontent="ignore" />
     <drop content="//body/div[@class='footer'][1]"
         nocontent="ignore" />
+    <pyquery use="afpyskin.fixup:docs" />
+    <replace content="children:.body" theme="children:#content" />
+    <replace href="/association/index.html"
+          content=".body li"
+          theme="children:#docs_nav" />
   </rule>
 
   <rule class="photos">
     <replace content="children:#content" theme="children:#content" />
     <pyquery use="afpyskin.fixup:photos" />
-    <pyquery use="afpyskin.fixup:twocolumns" />
   </rule>
 
   <rule class="membres">
@@ -105,6 +115,9 @@
   </rule>
 
   <rule>
+    <replace href="/static/banner.html"
+          content="children:#banner"
+          theme="#header h2" />
     <replace href="/membres/utils/personnal_bar"
           content="li"
           theme="children:#subnav" />
