@@ -3,7 +3,7 @@ import sys, os
 
 version = '0.0'
 
-setup(name='deliverance.afpy.org',
+setup(name='afpyskin',
       version=version,
       description="",
       long_description="""\
@@ -22,5 +22,7 @@ setup(name='deliverance.afpy.org',
       ],
       entry_points="""
       # -*- Entry points: -*-
+      [console_scripts]
+      afpy-proxy = afpyskin:afpy_proxy
       """,
       )
