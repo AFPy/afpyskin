@@ -124,7 +124,7 @@ body {
 	color:#fff;
 	font:140% Trebuchet MS;
 	text-decoration:none;
-	padding:10px;
+	padding:10px 5px;
 }
 
 #header #nav a:hover {
@@ -143,12 +143,16 @@ body {
 
 #header #subnav {
 	background:#4F9EC9;
-	padding:5px 7px 7px 7px;
 	font:90% Verdana;
+	color:#DEEDF5;
+    height:1.1em;
+	padding:5px 7px 7px 7px;
 	color:#DEEDF5;
 	border-bottom:2px solid #388CBA;
 	border-left:2px solid #388CBA;
 	border-right:2px solid #388CBA;
+    height:1.1em;
+	padding:5px 7px 7px 7px;
 }
 
 #header #subnav li {
@@ -161,7 +165,6 @@ body {
 	text-decoration:none;
 	font:100% Verdana;
 	padding:5px;
-	border-bottom:2px solid #4F9EC9;
 }
 
 #header #subnav a:hover {
@@ -177,9 +180,8 @@ body {
 
 #sidebar {
 	background:#fff;
-	width:210px;
+	width:170px;
 	padding:10px 20px 20px 5px;
-	float:left;
 	color:#666;
 }
 
@@ -227,7 +229,7 @@ body {
 
 #sidebar .subnav li {
 	list-style:none;
-	padding:5px;
+	padding:0px;
 	border-bottom:1px solid #fafafa;
 }
 
@@ -262,7 +264,6 @@ body {
 
 #sidebarright {
 	width:170px;
-	float:right;
 	padding:10px 0 0 20px;
 	background:url(/theme/images/sidebarright.jpg) top left no-repeat;
 }
@@ -352,6 +353,10 @@ a:hover {
 	text-decoration:none;
 }
 
+#content a:hover {
+	text-decoration:underline;
+}
+
 h3 {
 	font:140% Trebuchet MS;
 	margin:10px 0;
@@ -392,11 +397,14 @@ form {
 }
 
 label {
-	display:block;
 	font-weight:bold;
 	color:#444;
 	margin:5px 0;
 
+}
+.field_error,
+.field_req {
+    color:red;
 }
 input {
 	width:300px;
@@ -407,6 +415,11 @@ input {
 	color:#777;
 }
 
+#contentnorightbar input,
+#content input {
+	border:1px dotted #ccc;
+	width:auto;
+}
 textarea {
 	width:400px;
 	padding:4px;

@@ -5,18 +5,18 @@ import utils
 def prepare(content, theme, resource_fetcher, log):
     theme('#nav').empty()
     theme('#subnav').empty()
-    theme('#sidebar').empty()
+    theme('#sidebar').html('<div id="wsgi_menu"></div>')
     theme('#sidebarright').empty()
     theme('#content').empty()
 
 def twocolumns(content, theme, resource_fetcher, log):
     theme('#content').attr.id = 'contentnorightbar'
-    theme('#sidebarright').remove()
+    theme('#col2').remove()
 
 def nocolumns(content, theme, resource_fetcher, log):
     theme('#content').attr.id = 'contentnobar'
-    theme('#sidebar').remove()
-    theme('#sidebarright').remove()
+    theme('#col1').remove()
+    theme('#col2').remove()
 
 def photos(content, theme, resource_fetcher, log):
     portlets = content('.portlet')
