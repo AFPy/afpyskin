@@ -11,12 +11,12 @@ def prepare(content, theme, resource_fetcher, log):
 
 def twocolumns(content, theme, resource_fetcher, log):
     theme('#content').attr.id = 'contentnorightbar'
-    theme('#col2').remove()
+    theme('#sidebarright').remove()
 
 def nocolumns(content, theme, resource_fetcher, log):
     theme('#content').attr.id = 'contentnobar'
-    theme('#col1').remove()
-    theme('#col2').remove()
+    theme('#sidebar').remove()
+    theme('#sidebarright').remove()
 
 def photos(content, theme, resource_fetcher, log):
     portlets = content('.portlet')

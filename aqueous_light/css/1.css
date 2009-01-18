@@ -33,6 +33,9 @@ body {
 	padding:20px;
 }
 
+#header {
+    height:120px;
+}
 #header input {
 	width:150px;
 	padding:5px;

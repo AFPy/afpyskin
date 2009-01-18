@@ -24,6 +24,8 @@ PROX_TEMPLATE = os.environ.get('DEBUG', None) and 'http://wsgi.afpy.org:110%s/%s
 
 def get_proxy(req, log):
     name = req.script_name[1:]
+    if name == 'planet':
+        return 'http://ziade.org/afpy'
     port = PROX.get(name, None)
     prox = PROX_TEMPLATE % (port, name)
     return prox

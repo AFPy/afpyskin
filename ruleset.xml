@@ -33,7 +33,7 @@
   </proxy>
 
   <proxy path="/planet" class="theme planet default"
-         strip-script-name="0">
+         strip-script-name="1">
     <dest pyref="afpyskin.utils:get_proxy" />
     <response rewrite-links="1" />
   </proxy>
