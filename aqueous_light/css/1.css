@@ -302,12 +302,12 @@ body {
 
 
 #content {
-	margin:0 210px 0 240px;
+	margin:0;
 	padding:20px 0 0 20px;
 }
 
 #contentnorightbar {
-	margin:0 0 0 240px;
+	margin:0;
 	padding:20px 0 0 20px;
 }
 

@@ -29,7 +29,8 @@ def plone(content, theme, resource_fetcher, log):
     col1 = content('#portal-column-one')
     portlets = col1('.portlet')
     content('.listingBar').css.clear = 'none'
-    content('ftable').css.clear = 'none'
+    content('.ftable').css.clear = 'none'
+    content('.forumParent').css.clear = 'none'
     for p in portlets:
         utils.fixnav(p, theme)
 
