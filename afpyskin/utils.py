@@ -1,12 +1,32 @@
 # -*- coding: utf-8 -*-
+import os
 from pyquery import PyQuery as pq
-
-twocolumns = set(['/trac', '/wiki', '/photo', '/membres'])
 
 def get_theme(req, resp, log):
     if '/forum' in req.path_info:
         return "/theme/twocolumns.html"
     return "/theme/index.html"
+
+PROX = dict(
+        membres=10,
+        planet=10,
+
+        trac=20,
+
+        wiki=30,
+
+        docs=40,
+        photos=40,
+        association=40,
+     )
+
+PROX_TEMPLATE = os.environ.get('DEBUG', None) and 'http://wsgi.afpy.org:110%s/%s' or 'http://localhost:100%s/%s'
+
+def get_proxy(req, log):
+    name = req.script_name[1:]
+    port = PROX.get(name, None)
+    prox = PROX_TEMPLATE % (port, name)
+    return prox
 
 def match_notheme(req, resp, headers, *args):
     match = False
