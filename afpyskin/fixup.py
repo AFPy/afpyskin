@@ -28,9 +28,6 @@ def plone(content, theme, resource_fetcher, log):
     content('.documentActions').remove()
     col1 = content('#portal-column-one')
     portlets = col1('.portlet')
-    content('.listingBar').css.clear = 'none'
-    content('.ftable').css.clear = 'none'
-    content('.forumParent').css.clear = 'none'
     for p in portlets:
         utils.fixnav(p, theme)
 
@@ -44,13 +41,11 @@ def trac(content, theme, resource_fetcher, log):
         i = pq(i)
         i.attr(class_='__no_css')
         menu.append(i)
-    content('#dirlist').css.clear = 'none'
     theme('#sidebar').append(nav)
 
 def docs(content, theme, resource_fetcher, log):
     nav = pq('<h2>Association</h2><ul id="docs_nav" class="subnav"></ul>')
     theme('#sidebar').append(nav)
-    content('.body dl').css.clear = 'none'
 
 def wiki(content, theme, resource_fetcher, log):
     header = content('#header')
